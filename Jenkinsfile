@@ -1,47 +1,47 @@
-pipeline{
-
-    agent any
-
-// uncomment the following lines by removing /* and */ to enable
-    tools{
-       nodejs 'nodejs' 
+pipeline {
+  agent any
+  stages {
+    stage('build') {
+      steps {
+	echo 'Pipeline Status: Started'
+        echo 'Build Status: Started'
+        sh 'npm install'
+	echo 'Build Status: Successful'
+      }
     }
-    
 
-    stages{
-	stage('start'){
-	    steps{
-		echo "Pipeline Status: Started"
-	     }
-}
-        stage('build'){
-            steps{
-		echo "Build Status: Starting"
-                sh 'npm install'
-		echo "Build Status: Successful"
-             }
-        }
-        stage('test'){
-            steps{
-		echo "Test Status: Starting"
-                sh 'npm test'
-		echo "Build Status: Successful"
-                 }
-        }
-        stage('package'){
-            steps{
-		echo "Package Status: Starting"
-                sh 'npm run package'
-		echo "Package Status: Successful"
-                }
-        }
+    stage('test') {
+      steps {
+        echo 'Test Status: Started'
+        sh 'npm test'
+	echo 'Test Status: Successful'
+      }
     }
-    
-    post{
-        always{
-            echo "Pipeline Status: Ended"
-        }
-        
+
+    stage('package') {
+      steps {
+        echo 'Package Status: Started'
+        sh 'npm run package'
+	echo 'Package Status: Successful'
+      }
     }
-    
+
+    stage('artifact') {
+      steps {
+	echo 'Extracting Artifact'
+        archiveArtifacts '**/distribution/*.zip'
+	echo 'Extracted Artifact'
+      }
+    }
+
+  }
+  tools {
+    nodejs 'nodejs'
+  }
+  post {
+    always {
+      echo 'this pipeline has completed...'
+    }
+
+  }
 }
