@@ -3,10 +3,10 @@ pipeline {
   stages {
     stage('build') {
       steps {
-	echo 'Pipeline Status: Started'
+        echo 'Pipeline Status: Started'
         echo 'Build Status: Started'
         sh 'npm install'
-	echo 'Build Status: Successful'
+        echo 'Build Status: Successful'
       }
     }
 
@@ -14,7 +14,7 @@ pipeline {
       steps {
         echo 'Test Status: Started'
         sh 'npm test'
-	echo 'Test Status: Successful'
+        echo 'Test Status: Successful'
       }
     }
 
@@ -22,15 +22,15 @@ pipeline {
       steps {
         echo 'Package Status: Started'
         sh 'npm run package'
-	echo 'Package Status: Successful'
+        echo 'Package Status: Successful'
       }
     }
 
-    stage('artifact') {
+    stage('archive') {
       steps {
-	echo 'Extracting Artifact'
+        echo 'Extracting Artifact'
         archiveArtifacts '**/distribution/*.zip'
-	echo 'Extracted Artifact'
+        echo 'Extracted Artifact'
       }
     }
 
