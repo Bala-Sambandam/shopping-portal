@@ -40,7 +40,7 @@ pipeline {
   }
   post {
     always {
-      echo 'this pipeline has completed...'
+      echo 'Pipeline Status: Completed'
     }
 
   }
