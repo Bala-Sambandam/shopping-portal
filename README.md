@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/microservices-demo/front-end.svg?branch=master)](https://travis-ci.org/microservices-demo/front-end)
+![Build Status](https://travis-ci.org/microservices-demo/front-end.svg?branch=master)](https://travis-ci.org/microservices-demo/front-end)
 [![](https://images.microbadger.com/badges/image/weaveworksdemos/front-end.svg)](http://microbadger.com/images/weaveworksdemos/front-end "Get your own image badge on microbadger.com")
 
 
@@ -9,7 +9,7 @@ Front-end application written in [Node.js](https://nodejs.org/en/) that puts tog
 
 # Setting up Dev Env
 
-Platform : Ubuntu 18.04.05
+Platform : Ubuntu 18.04
 
 
 ### Common Setup
